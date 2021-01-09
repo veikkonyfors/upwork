@@ -1,3 +1,12 @@
+"""
+=====================================================
+ ordperm_saphana - Create permutations of orderlines over eligible suppliers
+=====================================================
+:Author: Veikko Nyfors <veikkonyfors@gmail.com>
+:Description: To be implemented as SAP/Hana stored procedure
+
+"""
+
 input = {
     "4711": ["A"],
     "4712": ["B","C","D"],
@@ -5,7 +14,7 @@ input = {
 }
 
 ordlns = {}
-n=0
+n=1
 combinations=1
 index={}
 numsup={}
@@ -18,7 +27,6 @@ for item in input.keys():
 items=len(input)
 
 for line in range(combinations):
-    print("line "+str(line))
     for item in input.keys():
         ordlns[item]=input[item][index[item]]
         if index[item]>=numsup[item]-1:
@@ -26,5 +34,4 @@ for line in range(combinations):
         else:
             index[item]+=1
     print (str(n)+" "+str(ordlns))
-      
-n+=1
+    n+=1
